@@ -8,7 +8,7 @@
 
 #작성일 : 2025/04/11
 
-#프로그램 설명 : 3개의 과목에 대해 5명의 학생의 점수를 관리하는 프로그램
+#프로그램 설명 : 3개의 과목에 대해 n명의 학생의 점수를 관리하는 프로그램
 
 ###################
 
@@ -129,10 +129,6 @@ def delete_stu_info():
 
 # 삽입 함수
 def insert_stu():
-    MAX_STUDENTS = 5  # 최대 학생 수 제한
-    if len(student_info) >= MAX_STUDENTS:
-        print(f"최대 {MAX_STUDENTS}명까지 입력 가능합니다. 더 이상 학생을 추가할 수 없습니다.")
-        return
     print("새롭게 삽입하고자 하는 학생의 정보를 입력하세요.")
     tmp_hakbun = int(input("학번: "))
     tmp_name = input("이름: ")
@@ -187,14 +183,11 @@ while True:
     menu_check = int(input("원하는 메뉴를 입력하세요 : "))
 
     if menu_check == 1:
-        stu_num = int(input("입력할 학생 수를 입력하세요 (최대 5명): "))
+        stu_num = int(input("입력할 학생 수를 입력하세요"))
         global student_info
         student_info = [0 for _ in range(stu_num)]
         for i in range(stu_num):
             student_info[i] = stu_list()
-        if stu_num > 5:
-            print("최대 5명까지 입력 가능합니다. 다시 시도해주세요.")
-            continue
         insert_check += 1
         stu_info_input()
         total_avg_calculate()
